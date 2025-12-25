@@ -55,9 +55,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/your-username/physical-ai-book/tree/main/book/',
-          showLastUpdateTime: true,
-          showLastUpdateAuthor: true,
+          editUrl: 'https://github.com/Kelashkumar12345/physical-and-robotics-book/tree/001-physical-ai-book/book/',
         },
         blog: false,
         theme: {
@@ -90,7 +88,7 @@ const config: Config = {
           label: 'Course',
         },
         {
-          href: 'https://github.com/your-username/physical-ai-book',
+          href: 'https://github.com/Kelashkumar12345/physical-and-robotics-book',
           label: 'GitHub',
           position: 'right',
         },

@@ -18,7 +18,11 @@
       "Bash(python scripts/ingest_content.py:*)",
       "Bash(npm run build:*)",
       "Bash(npm run serve:*)",
-      "Bash(\"D:\\\\ai-physical-and-robotics\\\\api\\\\venv\\\\Scripts\\\\python.exe\" -m uvicorn src.main:app --reload --port 8000)"
+      "Bash(\"D:\\\\ai-physical-and-robotics\\\\api\\\\venv\\\\Scripts\\\\python.exe\" -m uvicorn src.main:app --reload --port 8000)",
+      "Bash(git push:*)",
+      "Bash(npx vercel:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ]
   }
 }
