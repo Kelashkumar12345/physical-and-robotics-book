@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(powershell -ExecutionPolicy Bypass -File \".specify/scripts/powershell/check-prerequisites.ps1\" -Json -PathsOnly)",
+      "Bash(powershell -ExecutionPolicy Bypass -File \".specify/scripts/powershell/setup-plan.ps1\" -Json)",
+      "Bash(powershell -ExecutionPolicy Bypass -File \".specify/scripts/powershell/check-prerequisites.ps1\" -Json)",
+      "Bash(powershell -ExecutionPolicy Bypass -File:*)",
+      "Bash(powershell -Command \"[Convert]::FromBase64String\\(''AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAA//9AgD8AAP//QIA/AAD//0CAPwAA//8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIB/AAD/P0CAfwAA/z9AgH8AAP8/QIB/AAD/P4CAAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAfwAA/z9AgH8AAP8/QIB/AAD/P0CAfwAA/z+AgAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAfwAA/z9AgH8AAP8/QIB/AAD/P0CAfwAA/z+AgAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAICAAAAAgH8AAP8/QIB/AAD/P0CAfwAA/z9AgH8AAP8/gIAAAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIB/AAD/P0CAfwAA/z9AgH8AAP8/QIB/AAD/P4CAAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAgIAAAP9AgIAAAP9AgIAAAP9AgIAAAP9AgIAAAP9AgIAAAP9AgIAAAP9AgIAAAP8AAAAAAAAAAAAAAAAAgAAAAP8AgAAAAP8AgAAAAP8AgAAAAP8AgAAAAP8AgAAAAP8AgAAAAP8AgAAAAP8AAAAAAAAAAAAAAAAAAAAAAICAAAD/gIAAAP+AgAAA/4CAAAD/gIAAAP+AgAAA/4CAAAD/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAP+AgAAA/4CAAAD/gIAAAP+AgAAA/4CAAAD/gIAAAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAICAAAD/QICAAP//QICAAP//QICAAP//gIAAAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAICAAAD/QICAAP//gIAAAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAICAAAD/gIAAAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAD/gIAAAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAICAAAD/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAP//AAD//wAA//8AAP//AAD//wAAgAEAAIABAADAAQAAwAEAAOADAADwBwAA+A8AAPwfAAD+PwAA//8AAA==''\\) | Set-Content -Path ''D:\\\\ai-physical-and-robotics\\\\book\\\\static\\\\img\\\\favicon.ico'' -Encoding Byte\")",
+      "Bash(copy NUL \"D:\\\\ai-physical-and-robotics\\\\book\\\\static\\\\img\\\\favicon.ico\")",
+      "Bash(powershell -Command:*)",
+      "Bash(npm install:*)",
+      "Bash(pip install:*)",
+      "Bash(python -m uvicorn:*)",
+      "Bash(timeout:*)",
+      "Bash(npm run start)",
+      "Bash(npx docusaurus start:*)",
+      "Bash(curl:*)",
+      "Bash(python scripts/ingest_content.py:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm run serve:*)",
+      "Bash(\"D:\\\\ai-physical-and-robotics\\\\api\\\\venv\\\\Scripts\\\\python.exe\" -m uvicorn src.main:app --reload --port 8000)"
+    ]
+  }
+}

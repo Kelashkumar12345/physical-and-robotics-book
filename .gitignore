@@ -1,0 +1,51 @@
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Build outputs
+book/build/
+book/.docusaurus/
+dist/
+*.egg-info/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.Python
+api/.venv/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+*.env
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Testing
+coverage/
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Misc
+*.tmp
+*.bak

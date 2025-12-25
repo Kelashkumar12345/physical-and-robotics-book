@@ -1,0 +1,67 @@
+/* CodeBlock wrapper styles */
+.codeBlockWrapper {
+  position: relative;
+  margin: 1rem 0;
+}
+
+.codeBlockTitle {
+  background-color: var(--ifm-color-emphasis-200);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 8px 8px 0 0;
+  border-bottom: 1px solid var(--ifm-color-emphasis-300);
+}
+
+.codeBlockContainer {
+  position: relative;
+}
+
+/* Copy button */
+.copyButton {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 10;
+  padding: 4px 8px;
+  background-color: var(--ifm-color-emphasis-200);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  font-size: 14px;
+}
+
+.codeBlockContainer:hover .copyButton {
+  opacity: 1;
+}
+
+.copyButton:hover {
+  background-color: var(--ifm-color-emphasis-300);
+}
+
+.copyButton:focus {
+  opacity: 1;
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+}
+
+.copyIcon,
+.copiedIcon {
+  display: inline-block;
+}
+
+.copiedIcon {
+  color: var(--ifm-color-success);
+}
+
+/* Dark mode adjustments */
+[data-theme='dark'] .copyButton {
+  background-color: var(--ifm-color-emphasis-300);
+  border-color: var(--ifm-color-emphasis-400);
+}
+
+[data-theme='dark'] .copyButton:hover {
+  background-color: var(--ifm-color-emphasis-400);
+}

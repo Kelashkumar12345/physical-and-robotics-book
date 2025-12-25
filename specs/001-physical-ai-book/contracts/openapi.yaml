@@ -1,0 +1,283 @@
+openapi: 3.1.0
+info:
+  title: Physical AI Book RAG Chatbot API
+  description: |
+    RAG-powered chatbot API for the Physical AI & Humanoid Robotics Book.
+    Provides conversational Q&A using book content as knowledge base.
+  version: 1.0.0
+  contact:
+    name: API Support
+
+servers:
+  - url: https://api.physical-ai-book.example.com
+    description: Production API
+  - url: http://localhost:8000
+    description: Local development
+
+paths:
+  /api/v1/chat:
+    post:
+      operationId: sendMessage
+      summary: Send a message to the chatbot
+      description: |
+        Send a user message and receive an AI response based on book content.
+        Rate limited to 50 questions per session.
+      tags:
+        - Chat
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatRequest'
+            examples:
+              simple:
+                summary: Simple question
+                value:
+                  message: "What is ROS 2?"
+              contextual:
+                summary: With selected text context
+                value:
+                  message: "Explain this in simpler terms"
+                  context: "URDF (Unified Robot Description Format) is an XML format for representing a robot model..."
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatResponse'
+          headers:
+            X-Questions-Remaining:
+              schema:
+                type: integer
+              description: Number of questions remaining in session (max 50)
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: Rate limit exceeded (50 questions/session)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: "rate_limit_exceeded"
+                message: "You've reached the 50 question limit for this session. Please start a new session to continue."
+        '503':
+          description: Service unavailable (AI service down)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/v1/chat/session:
+    get:
+      operationId: getSession
+      summary: Get current session status
+      description: Returns session information including question count
+      tags:
+        - Chat
+      responses:
+        '200':
+          description: Session status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionStatus'
+
+    delete:
+      operationId: resetSession
+      summary: Reset chat session
+      description: Clears conversation history and resets question counter
+      tags:
+        - Chat
+      responses:
+        '200':
+          description: Session reset successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Session reset successfully"
+
+  /api/v1/health:
+    get:
+      operationId: healthCheck
+      summary: Health check endpoint
+      description: Returns API health status and dependencies
+      tags:
+        - System
+      responses:
+        '200':
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthStatus'
+        '503':
+          description: Unhealthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthStatus'
+
+components:
+  schemas:
+    ChatRequest:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+          minLength: 1
+          maxLength: 4000
+          description: User's question or message
+          example: "What is ROS 2?"
+        context:
+          type: string
+          maxLength: 2000
+          description: Optional selected text context for contextual queries
+          example: "URDF defines the robot's physical structure..."
+
+    ChatResponse:
+      type: object
+      required:
+        - id
+        - message
+        - citations
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique message identifier
+        message:
+          type: string
+          description: AI assistant's response
+          example: "ROS 2 (Robot Operating System 2) is middleware for robot control..."
+        citations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Citation'
+          description: Source citations from the book
+        isOutOfScope:
+          type: boolean
+          default: false
+          description: True if the question is outside the book's scope
+        questionsRemaining:
+          type: integer
+          minimum: 0
+          maximum: 50
+          description: Questions remaining in session
+
+    Citation:
+      type: object
+      required:
+        - title
+        - url
+      properties:
+        title:
+          type: string
+          description: Section title for display
+          example: "Module 1: ROS 2 Fundamentals - Week 3"
+        url:
+          type: string
+          format: uri
+          description: Link to the referenced section
+          example: "/docs/module-1-ros2/week-3-nodes#ros2-overview"
+        relevanceScore:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 1
+          description: Relevance score (0-1)
+          example: 0.92
+
+    SessionStatus:
+      type: object
+      required:
+        - sessionId
+        - questionCount
+        - questionsRemaining
+      properties:
+        sessionId:
+          type: string
+          format: uuid
+          description: Current session identifier
+        questionCount:
+          type: integer
+          minimum: 0
+          maximum: 50
+          description: Questions asked in this session
+        questionsRemaining:
+          type: integer
+          minimum: 0
+          maximum: 50
+          description: Questions remaining before limit
+        hasContext:
+          type: boolean
+          description: Whether selected text context is active
+
+    HealthStatus:
+      type: object
+      required:
+        - status
+        - timestamp
+      properties:
+        status:
+          type: string
+          enum: [healthy, degraded, unhealthy]
+        timestamp:
+          type: string
+          format: date-time
+        dependencies:
+          type: object
+          properties:
+            qdrant:
+              type: string
+              enum: [up, down]
+            openai:
+              type: string
+              enum: [up, down]
+
+    Error:
+      type: object
+      required:
+        - error
+        - message
+      properties:
+        error:
+          type: string
+          description: Error code
+          example: "rate_limit_exceeded"
+        message:
+          type: string
+          description: Human-readable error message
+          example: "You've reached the 50 question limit for this session."
+        details:
+          type: object
+          additionalProperties: true
+          description: Additional error context
+
+  securitySchemes:
+    sessionCookie:
+      type: apiKey
+      in: cookie
+      name: session_id
+      description: Session identifier cookie (auto-generated)
+
+security:
+  - sessionCookie: []
+
+tags:
+  - name: Chat
+    description: Chatbot conversation endpoints
+  - name: System
+    description: Health and status endpoints

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <defs>
+    <linearGradient id="robotGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2563eb"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
+    </linearGradient>
+  </defs>
+  <!-- Robot head -->
+  <rect x="12" y="8" width="24" height="20" rx="4" fill="url(#robotGradient)"/>
+  <!-- Eyes -->
+  <circle cx="18" cy="16" r="3" fill="#fff"/>
+  <circle cx="30" cy="16" r="3" fill="#fff"/>
+  <circle cx="18" cy="16" r="1.5" fill="#1e293b"/>
+  <circle cx="30" cy="16" r="1.5" fill="#1e293b"/>
+  <!-- Antenna -->
+  <line x1="24" y1="8" x2="24" y2="3" stroke="#2563eb" stroke-width="2"/>
+  <circle cx="24" cy="2" r="2" fill="#60a5fa"/>
+  <!-- Body -->
+  <rect x="14" y="30" width="20" height="12" rx="2" fill="url(#robotGradient)"/>
+  <!-- Arms -->
+  <rect x="6" y="30" width="6" height="10" rx="2" fill="#3b82f6"/>
+  <rect x="36" y="30" width="6" height="10" rx="2" fill="#3b82f6"/>
+  <!-- Chest light -->
+  <circle cx="24" cy="36" r="3" fill="#22c55e"/>
+</svg>

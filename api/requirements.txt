@@ -1,0 +1,27 @@
+# Web Framework
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+
+# OpenAI Integration
+openai>=1.6.0
+
+# Vector Store
+qdrant-client>=1.7.0
+
+# Configuration & Validation
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+python-dotenv>=1.0.0
+
+# Async HTTP
+httpx>=0.25.0
+
+# Content Processing
+tiktoken>=0.5.0
+python-frontmatter>=1.0.0
+markdown>=3.5.0
+
+# Development
+ruff>=0.1.0
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
