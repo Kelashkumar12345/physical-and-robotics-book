@@ -28,8 +28,8 @@ export default function ChatWidget({ apiUrl }: ChatWidgetProps): JSX.Element {
   const [selectedContext, setSelectedContext] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  // Default to localhost for development, can be overridden via apiUrl prop
-  const baseUrl = apiUrl || 'http://localhost:8000';
+  // Use Vercel API in production, localhost for development
+  const baseUrl = apiUrl || 'https://api-five-sepia-88.vercel.app';
 
   const toggleOpen = useCallback(() => {
     setIsOpen(prev => !prev);

@@ -38,8 +38,8 @@ class ChatApiClient {
   private baseUrl: string;
 
   constructor(baseUrl?: string) {
-    // Default to localhost for development, can be overridden via constructor
-    this.baseUrl = baseUrl || 'http://localhost:8000';
+    // Use Vercel API in production, localhost for development
+    this.baseUrl = baseUrl || 'https://api-five-sepia-88.vercel.app';
   }
 
   private async request<T>(
