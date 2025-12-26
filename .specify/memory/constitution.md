@@ -1,68 +1,55 @@
-# Physical AI & Humanoid Robotics Constitution
+# [PROJECT_NAME] Constitution
+<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
 
 ## Core Principles
 
-### I. Simulation-First Development
-All robotics algorithms and behaviors MUST be developed and validated in simulation (Isaac Sim, Gazebo, Unity) before deployment to physical hardware. This ensures safety, rapid iteration, and reproducibility.
+### [PRINCIPLE_1_NAME]
+<!-- Example: I. Library-First -->
+[PRINCIPLE_1_DESCRIPTION]
+<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
 
-### II. Modular Architecture
-System components MUST be loosely coupled and independently deployable:
-- Frontend (Docusaurus static site)
-- Backend (FastAPI API service)
-- Vector Store (Qdrant Cloud)
-- Database (Neon Postgres for session tracking)
+### [PRINCIPLE_2_NAME]
+<!-- Example: II. CLI Interface -->
+[PRINCIPLE_2_DESCRIPTION]
+<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
 
-Each module has clear interfaces and can be updated without affecting others.
+### [PRINCIPLE_3_NAME]
+<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
+[PRINCIPLE_3_DESCRIPTION]
+<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
 
-### III. Documentation-as-Code
-All course content MUST be stored as Markdown files under version control. Documentation is treated as a first-class artifact:
-- Content lives in `book/docs/`
-- Changes tracked via Git
-- Deployable through CI/CD pipeline
+### [PRINCIPLE_4_NAME]
+<!-- Example: IV. Integration Testing -->
+[PRINCIPLE_4_DESCRIPTION]
+<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
 
-### IV. RAG-Enabled Content
-The embedded chatbot MUST use Retrieval-Augmented Generation to provide accurate, book-grounded responses:
-- Content indexed in vector store (Qdrant)
-- Semantic search for relevant chunks
-- Citations link back to source sections
-- Out-of-scope detection for non-book topics
+### [PRINCIPLE_5_NAME]
+<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
+[PRINCIPLE_5_DESCRIPTION]
+<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
 
-### V. Practical Learning Focus
-Every concept MUST include hands-on examples:
-- Code snippets with syntax highlighting
-- Step-by-step tutorials
-- Real-world ROS 2, URDF, sensor integration examples
-- Executable demonstrations where possible
+### [PRINCIPLE_6_NAME]
 
-### VI. Sim-to-Real Methodology
-The curriculum follows a progressive sim-to-real pipeline:
-1. Isaac Sim (high-fidelity NVIDIA simulation)
-2. Gazebo (ROS 2 integration testing)
-3. Jetson/Edge deployment (hardware validation)
 
-This ensures learners understand the full development lifecycle from simulation to physical robot deployment.
+[PRINCIPLE__DESCRIPTION]
 
-## Technology Constraints
+## [SECTION_2_NAME]
+<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
 
-- **Frontend**: Docusaurus 3.x, TypeScript, React 18
-- **Backend**: Python 3.11+, FastAPI, Pydantic
-- **AI/ML**: OpenAI Agents SDK, text-embedding-3-small
-- **Storage**: Qdrant Cloud (vectors), Neon Postgres (sessions)
-- **Deployment**: GitHub Pages (static), Cloud Run (API)
+[SECTION_2_CONTENT]
+<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
 
-## Quality Standards
+## [SECTION_3_NAME]
+<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
 
-- Page load time: <3 seconds
-- Chatbot response time: <5 seconds
-- Uptime target: 99%
-- Mobile-responsive design required
-- Code examples must include syntax highlighting
+[SECTION_3_CONTENT]
+<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
 
 ## Governance
+<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-This constitution supersedes all other development practices. Any deviation requires:
-1. Documentation of the exception
-2. Justification of why the principle cannot be followed
-3. Approval via ADR (Architecture Decision Record)
+[GOVERNANCE_RULES]
+<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
 
-**Version**: 1.0.0 | **Ratified**: 2025-12-25 | **Last Amended**: 2025-12-25
+**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
+<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
