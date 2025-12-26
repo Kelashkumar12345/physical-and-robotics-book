@@ -23,7 +23,9 @@
       "Bash(npx vercel:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(railway --version:*)",
+      "Bash(printf:*)"
     ]
   }
 }
