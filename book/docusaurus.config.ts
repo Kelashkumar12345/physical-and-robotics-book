@@ -7,9 +7,9 @@ const config: Config = {
   tagline: 'A 13-week journey from simulation to reality',
   favicon: 'img/favicon.ico',
 
-  // Production URL
-  url: 'https://your-username.github.io',
-  baseUrl: '/physical-ai-book/',
+  // Production URL (Vercel)
+  url: 'https://book-navy-seven.vercel.app',
+  baseUrl: '/',
 
   // GitHub Pages deployment config
   organizationName: 'your-username',
